@@ -1,0 +1,42 @@
+#hometitle {
+    background-color: #25fe37 !important;
+}
+
+.navbar-light .navbar-brand{
+    font-size: 20px;
+    color: black;
+    font-weight: bold;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    font-size: 20px;
+    color: black !important;
+    font-weight: bold;
+}
+
+.text-center {
+    background-color: black!important
+}
+
+body{
+    background-color: black !important;
+}
+
+img {
+    padding: 10px;
+    background-color: white !important;
+}
+
+
+.row img{
+    width: 100%;
+    height: 550px;
+}
+
+.navbar-light .navbar-brand{
+    font-size: 20px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    font-size: 20px;
+}
