@@ -34,10 +34,10 @@ function updateSymbol(facebookData) {
 	fbData = JSON.parse(facebookData)
 	fbData.forEach((item, i) => {
 		data.x.push(item['date']);
-		data.y.push(item['close']);
+		data.y.push(item['actual']);
 	});
 	console.log(fbData);
-	
+
 	const layout = {
 	  title: "<Symbol> Stock Market Values"
 	};
