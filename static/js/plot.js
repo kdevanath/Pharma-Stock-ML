@@ -31,11 +31,13 @@ function updateSymbol(facebookData) {
 	  }
 	};
 	console.log(facebookData);
-	facebookData.forEach((item, i) => {
+	fbData = JSON.parse(facebookData)
+	fbData.forEach((item, i) => {
 		data.x.push(item['date']);
 		data.y.push(item['close']);
 	});
-	console.log(facebookData);
+	console.log(fbData);
+	
 	const layout = {
 	  title: "<Symbol> Stock Market Values"
 	};
