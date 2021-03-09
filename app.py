@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("HomePage.html")
+    return render_template("homePage.html")
 
 @app.route("/facebook_model/<symbol>")
 def run_facebook_model(symbol):
@@ -26,4 +26,4 @@ def run_arima_model(symbol):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port=5002,debug=True)
