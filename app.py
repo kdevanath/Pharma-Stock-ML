@@ -10,6 +10,10 @@ app = Flask(__name__)
 def index():
     return render_template("homePage.html")
 
+@app.route("/data")
+def data():
+    return render_template("data.html")
+
 @app.route("/facebook_model/<symbol>")
 def run_facebook_model(symbol):
     print(symbol)
