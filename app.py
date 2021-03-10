@@ -28,4 +28,4 @@ def run_arima_model(symbol):
     return run_arima_model(stock_df2)
     
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port = 5002, debug=True)

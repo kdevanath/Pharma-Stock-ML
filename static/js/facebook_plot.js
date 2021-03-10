@@ -23,7 +23,6 @@ $(function(){
 
 function convertDate(timestamp) {
 	var time = new Date(timestamp);
-	console.log(timestamp);
 	var dd = time.getDate();
 	var mm = time.getMonth()+1;
 	var yy = time.getFullYear();
@@ -40,17 +39,16 @@ function updateFSymbol(facebookData) {
 	  }
 	};
 
-	console.log(facebookData);
 	fbData = JSON.parse(facebookData)
 	fbData.forEach((item, i) => {
-		console.log(item);
-		data.x.push(item['date']);
+		data.x.push(convertDate(item['date']));
 		data.y.push(item['actual']);
 	});
 
-
+	console.log('Done conversion?')
 	const layout = {
 	  title: "<Symbol> FB Stock Market Values"
 	};
+	console.log('Am I here already?');
 	Plotly.newPlot("plot", [data], layout);
 	};
