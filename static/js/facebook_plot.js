@@ -21,26 +21,36 @@ $(function(){
 	});
 });
 
+function convertDate(timestamp) {
+	var time = new Date(timestamp);
+	console.log(timestamp);
+	var dd = time.getDate();
+	var mm = time.getMonth()+1;
+	var yy = time.getFullYear();
+	return dd +"/" + mm+"/" + yy;
+}
+
 function updateFSymbol(facebookData) {
 	let data = {
 	  x: [],
 	  y: [],
 	  type: "line",
 	  marker: {
-	    color: ['#1DB954','#441DB9']
+	    color: ['#1DB954']
 	  }
 	};
+
 	console.log(facebookData);
 	fbData = JSON.parse(facebookData)
 	fbData.forEach((item, i) => {
+		console.log(item);
 		data.x.push(item['date']);
 		data.y.push(item['actual']);
 	});
-	console.log(fbData);
+
 
 	const layout = {
 	  title: "<Symbol> FB Stock Market Values"
 	};
 	Plotly.newPlot("plot", [data], layout);
-
 	};
