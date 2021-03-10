@@ -37,6 +37,27 @@ img {
     font-size: 20px;
 }
 
+.ml2 {
+    font-weight: 900;
+    font-size: 3.5em; 
+  }
+.ml2 .letter {
+    display: inline-block;
+    line-height: 1em;
+    color: white;
+    text-align: center;
+  }
+
+.col-12{
+    text-align: center;
+}
+
+
+.letter {
+    font-size: 100px;
+}
+
 .navbar-light .navbar-nav .nav-link {
     font-size: 20px;
 }
+

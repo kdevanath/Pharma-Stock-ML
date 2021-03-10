@@ -38,12 +38,13 @@
     </div>
   </nav>
 
-
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <img src="../static/images/Stock_image.png">
-    </div>
+  <div class="container">
+    <div class="col-12" id="root">
+      <h1 class="ml2">Stock Data</h1>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+      <script src="../animate.js"></script>
   </div>
+</div>
 
   <br>
   
@@ -58,6 +59,17 @@
           </div>
             <div id="sample-metadata" class="panel-body"></div>
           </div>
+        </div>
+
+
+        <div class="input-group">
+          <div class="form-outline">
+            <input id="search-input" type="search" id="form1" class="form-control" />
+            <label class="form-label" for="form1"></label>
+          </div>
+          <button id="search-button" type="button" class="btn btn-primary">
+            <i class="fas fa-search">Search</i>
+          </button>
         </div>
 
 
