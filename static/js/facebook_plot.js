@@ -30,25 +30,45 @@ function convertDate(timestamp) {
 }
 
 function updateFSymbol(facebookData) {
-	let data = {
-	  x: [],
-	  y: [],
-	  type: "line",
-	  marker: {
-	    color: ['#1DB954']
-	  }
-	};
 
-	fbData = JSON.parse(facebookData)
+	let fbData = JSON.parse(facebookData)
+	x_var = [],
+	y_act = [],
+	y_pred = [],
 	fbData.forEach((item, i) => {
-		data.x.push(convertDate(item['date']));
-		data.y.push(item['actual']);
+		console.log(item);
+		x_var.push(convertDate(item['date']));
+		y_act.push(item['actual']);
+		y_pred.push(item['prediction']);
 	});
 
-	console.log('Done conversion?')
+	console.log(x_var);
+
+	let trace1 = {
+		x: x_var,
+	 	y: y_act,
+	 	type: "line",
+	 	marker: {
+		 color: ['#1DB954']
+	 	}
+	};
+
+
+	let trace2 = {
+		x: x_var,
+		y: y_pred,
+		type: "line",
+	 	marker: {
+		 color: ['#441DB9']
+	 	}
+	};
+
+
+	let data = [trace1,trace2]
+
+
 	const layout = {
 	  title: "<Symbol> FB Stock Market Values"
 	};
-	console.log('Am I here already?');
-	Plotly.newPlot("plot", [data], layout);
+	Plotly.newPlot("plot", data, layout);
 	};
