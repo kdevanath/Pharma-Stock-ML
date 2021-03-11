@@ -61,5 +61,12 @@ img {
     font-size: 20px;
 }
 
+#search-button{
+    background-color: #eb0f29 !important;
+}
 
+#search-text{
+    color: black;
+    font-weight: bolder;
+}
 
