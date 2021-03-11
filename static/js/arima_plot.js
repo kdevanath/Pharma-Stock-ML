@@ -1,33 +1,4 @@
-$(function(){
-  $('#dropDown .dropdown-item').click((event) => {
-    $.ajax({
-      type:"GET",
-      url: "/arima_model/<symbol>",
-      data: {
-        symbol: event.target.textContent
-      },
-      success: function(data) {
-        $('#dropDown .dropdown-menu').hide(200);
-        updateASymbol(data, event.target.textContent);
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-        $('#dropDown .dropdown-menu').hide(200);
-        alert(jqXHR.status);
-      },
-    });
-  });
-});
-
-function convertDate(timestamp) {
-	var time = new Date(timestamp);
-	var dd = time.getDate();
-	var mm = time.getMonth()+1;
-	var yy = time.getFullYear();
-	return dd +"/" + mm+"/" + yy;
-}
-
-function updateASymbol(arimaData, symbol) {
-
+function updateASymbol(arimaData) {
 	let arData = JSON.parse(arimaData)
   console.log(arimaData);
 	x_var = [],
@@ -66,4 +37,4 @@ function updateASymbol(arimaData, symbol) {
 	  title: title
 	};
 	Plotly.newPlot("graph", data, layout);
-}
+};
