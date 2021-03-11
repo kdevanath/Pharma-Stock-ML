@@ -52,15 +52,11 @@ def run_facebook_prophet_model(stock_df):
     to_json = plot_df.to_json(orient = 'records')
     return to_json
 
-<<<<<<< HEAD
-def run_arima_model_for_stocks(stock_df):
-    print("ARIMA MODEL")
-=======
+
 def run_arima_model_for_stock(stock_df):
     from statsmodels.tsa.arima.model import ARIMA
     from sklearn.metrics import mean_squared_error
     from pandas.plotting import lag_plot
->>>>>>> 7775552... Updated a lot. Search bar works. Edited html a little.
     print(stock_df.isnull().sum())
 
     """
@@ -105,11 +101,7 @@ def run_arima_model_for_stock(stock_df):
     model_predictions = []
     number_of_test_observations = len(test_data)
     for time_point in range(number_of_test_observations):
-<<<<<<< HEAD
-        model = ARIMA(history, order=(4,1,0)) 
-=======
         model = ARIMA(history, order=(1,1,1))
->>>>>>> 7775552... Updated a lot. Search bar works. Edited html a little.
         model_fit = model.fit()
         output = model_fit.forecast()
         yhat = output[0]
