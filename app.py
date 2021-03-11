@@ -23,7 +23,7 @@ def run_facebook_model(symbol):
 
 @app.route("/arima_model/<symbol>")
 def run_arima_model(symbol):
-    print("symbol")
+    print("symbol for ARIMA MODEL")
     stock_df2 = get_stock_data("JNJ")
     return run_arima_model_for_stocks(stock_df2)
     
