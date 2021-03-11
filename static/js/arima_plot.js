@@ -8,7 +8,7 @@ $(function(){
       },
       success: function(data) {
         $('#dropDown .dropdown-menu').hide(200);
-        updateSymbol(data);
+        updateASymbol(data, event.target.textContent);
       },
       error: function(jqXHR, textStatus, errorThrown) {
         $('#dropDown .dropdown-menu').hide(200);
@@ -26,7 +26,7 @@ function convertDate(timestamp) {
 	return dd +"/" + mm+"/" + yy;
 }
 
-function updateASymbol(arimaData) {
+function updateASymbol(arimaData, symbol) {
 
 	let arData = JSON.parse(arimaData)
   console.log(arimaData);
@@ -61,11 +61,9 @@ function updateASymbol(arimaData) {
 	};
 
 	let data = [trace1,trace2]
-
+	title = "Predictions using Arima Model: " + symbol;
 	const layout = {
-	  title: "<Symbol> FB Stock Market Values"
+	  title: title
 	};
 	Plotly.newPlot("graph", data, layout);
-	};
-
-	};
+}

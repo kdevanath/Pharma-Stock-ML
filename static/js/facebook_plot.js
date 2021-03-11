@@ -1,7 +1,8 @@
 $(function(){
     // names of id go with # symbol (for all)
     // creates an event to pull information
-    // based on what we need
+	// based on what we need
+
 	$('#dropDown .dropdown-item').click((event) => {
 		$.ajax({
 	    type:"GET",
@@ -11,7 +12,8 @@ $(function(){
 	    },
 			success: function(data) {
 				$('#dropDown .dropdown-menu').hide(200);
-				updateFSymbol(data);
+				console.log(event.target.textContent)
+				updateFSymbol(data, event.target.textContent);
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				$('#dropDown .dropdown-menu').hide(200);
@@ -29,20 +31,17 @@ function convertDate(timestamp) {
 	return dd +"/" + mm+"/" + yy;
 }
 
-function updateFSymbol(facebookData) {
+function updateFSymbol(facebookData, symbol) {
 
 	let fbData = JSON.parse(facebookData)
 	x_var = [],
 	y_act = [],
 	y_pred = [],
 	fbData.forEach((item, i) => {
-		console.log(item);
 		x_var.push(convertDate(item['date']));
 		y_act.push(item['actual']);
 		y_pred.push(item['prediction']);
 	});
-
-	console.log(x_var);
 
 	let trace1 = {
 		x: x_var,
@@ -66,9 +65,9 @@ function updateFSymbol(facebookData) {
 
 	let data = [trace1,trace2]
 
-
+	title = "Predictions using Facebook Prophet Model for: " + symbol;
 	const layout = {
-	  title: "<Symbol> FB Stock Market Values"
+	  title: title
 	};
 	Plotly.newPlot("plot", data, layout);
-	};
+}
