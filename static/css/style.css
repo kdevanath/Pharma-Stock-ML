@@ -2,6 +2,7 @@
 
 #hometitle {
     background-color: #25fe37 !important;
+    flex-wrap: nowrap;
 }
 
 .navbar-light .navbar-brand{
