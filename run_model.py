@@ -3,6 +3,8 @@ import pandas as pd
 import yfinance as yf
 from pandas import datetime
 import matplotlib.pyplot as plt
+from  statsmodels.tsa.arima.model import ARIMA
+from sklearn.metrics import mean_squared_error
 
 
 def get_stock_data(stock_symbol):
@@ -44,19 +46,18 @@ def run_facebook_prophet_model(stock_df):
 
     plot_df =  pd.DataFrame({'date': prediction['ds'],
                         'prediction': prediction['yhat'],
-                        'actual': features['y']
-                        'yhat_lower': prediction['yhat_lower']
+                        'actual': features['y'],
+                        'yhat_lower': prediction['yhat_lower'],
                         'yhat_upper': prediction['yhat_upper']})
     to_json = plot_df.to_json(orient = 'records')
     return to_json
 
-def run_arima_model(stock_df):
-    from  statsmodels.tsa.arima.model import ARIMA
-    from sklearn.metrics import mean_squared_error
-    from pandas.plotting import lag_plot
+def run_arima_model_for_stocks(stock_df):
+    print("ARIMA MODEL")
     print(stock_df.isnull().sum())
 
     """
+    from pandas.plotting import lag_plot
     plt.figure(figsize=(12,8))
     lag_plot(stock_df['close'], lag=5)
     plt.title('BMY Stock - Autocorrelation plot with lag = 5')
@@ -97,7 +98,7 @@ def run_arima_model(stock_df):
     model_predictions = []
     number_of_test_observations = len(test_data)
     for time_point in range(number_of_test_observations):
-        model = ARIMA(history, order=(1,1,1)) 
+        model = ARIMA(history, order=(4,1,0)) 
         model_fit = model.fit()
         output = model_fit.forecast()
         yhat = output[0]

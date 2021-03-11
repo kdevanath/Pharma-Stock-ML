@@ -23,9 +23,9 @@ def run_facebook_model(symbol):
 
 @app.route("/arima_model/<symbol>")
 def run_arima_model(symbol):
-    print(symbol)
-    stock_df2 = get_stock_data(symbol)
-    return run_arima_model(stock_df2)
+    print("symbol")
+    stock_df2 = get_stock_data("JNJ")
+    return run_arima_model_for_stocks(stock_df2)
     
 if __name__ == "__main__":
     app.run(port = 5002, debug=True)
