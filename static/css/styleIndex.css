@@ -62,11 +62,14 @@ img {
 }
 
 #search-button{
-    background-color: #eb0f29 !important;
+    background-color: #1364aa !important;
 }
 
 #search-text{
-    color: black;
+    color: white;
     font-weight: bolder;
 }
 
+hr{
+    color: white !important;
+}

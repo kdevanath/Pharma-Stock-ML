@@ -78,3 +78,12 @@ hr{
     width: 50%;
     height: auto;
 }
+
+#search-button{
+    background-color: #1364aa !important;
+}
+
+#search-text{
+    color: white;
+    font-weight: bolder;
+}
