@@ -27,13 +27,11 @@ def get_stock_data(stock_symbol):
 
 def run_facebook_prophet_model(stock_df):
     from fbprophet import Prophet
-    print(type(stock_df))
     features = stock_df[['date','close']]
     features = features.rename(columns={'date':'ds', 'close':'y'})
-    print(features.head(5))
     m = Prophet(daily_seasonality = True) # the Prophet class (model)
     m.fit(features) # fit the model using all data
-    future = m.make_future_dataframe(periods=365) #we need to specify the number of days in future
+    future = m.make_future_dataframe(periods=60) #we need to specify the number of days in future
     prediction = m.predict(future)
     print(prediction.columns)
 
