@@ -1,25 +1,33 @@
 $(function(){
-    // names of id go with # symbol (for all)
-    // creates an event to pull information
-	// based on what we need
+	$('#navbar-search-form').submit((event) => {
+		const symbol = $('#search-input').val();
 
-	$('#dropDown .dropdown-item').click((event) => {
-		$.ajax({
-	    type:"GET",
-	    url: "/facebook_model/<symbol>",
-			data: {
-         symbol: event.target.textContent
-	    },
-			success: function(data) {
-				$('#dropDown .dropdown-menu').hide(200);
-				console.log(event.target.textContent)
-				updateFSymbol(data, event.target.textContent);
-			},
-			error: function(jqXHR, textStatus, errorThrown) {
-				$('#dropDown .dropdown-menu').hide(200);
-				alert(jqXHR.status);
-			},
-		});
+		// Get data for facebook chart
+    $.ajax({
+      type: "GET",
+      url: `/facebook_model/${symbol}`,
+      success: function(data) {
+        updateFSymbol(data);
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        alert(jqXHR.status);
+      },
+    });
+
+		// // Get data for arima chart
+    // $.ajax({
+    //   type: "GET",
+    //   url: `/arima_model/${symbol}`,
+    //   success: function(data) {
+    //     updateASymbol(data);
+    //   },
+    //   error: function(jqXHR, textStatus, errorThrown) {
+    //     alert(jqXHR.status);
+    //   },
+    // });
+
+		// Prevent form from being submitted to server
+		return false;
 	});
 });
 
@@ -52,7 +60,6 @@ function updateFSymbol(facebookData, symbol) {
 	 	}
 	};
 
-
 	let trace2 = {
 		x: x_var,
 		y: y_pred,
@@ -62,12 +69,51 @@ function updateFSymbol(facebookData, symbol) {
 	 	}
 	};
 
-
 	let data = [trace1,trace2]
 
-	title = "Predictions using Facebook Prophet Model for: " + symbol;
 	const layout = {
 	  title: title
 	};
 	Plotly.newPlot("plot", data, layout);
-}
+};
+
+// function updateASymbol(arimaData) {
+// 	let arData = JSON.parse(arimaData)
+//   console.log(arimaData);
+// 	x_var = [],
+// 	y_act = [],
+// 	y_pred = [],
+// 	arData.forEach((item, i) => {
+// 		console.log(item);
+// 		x_var.push(convertDate(item['date']));
+// 		y_act.push(item['actual']);
+// 		y_pred.push(item['prediction']);
+// 	});
+//
+// 	console.log(x_var);
+//
+// 	let trace1 = {
+// 		x: x_var,
+// 	 	y: y_act,
+// 	 	type: "line",
+// 	 	marker: {
+// 		 color: ['#1DB954']
+// 	 	}
+// 	};
+//
+// 	let trace2 = {
+// 		x: x_var,
+// 		y: y_pred,
+// 		type: "line",
+// 	 	marker: {
+// 		 color: ['#441DB9']
+// 	 	}
+// 	};
+//
+// 	let data = [trace1,trace2]
+//
+// 	const layout = {
+// 	  title: "<Symbol> FB Stock Market Values"
+// 	};
+// 	Plotly.newPlot("graph", data, layout);
+// };

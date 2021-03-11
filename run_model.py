@@ -11,19 +11,19 @@ def get_stock_data(stock_symbol):
     print(stock_symbol)
     ticker = yf.Ticker(stock_symbol)
     stock_data = ticker.history(interval="1d", period="10y")
-    
+
     stock_df = pd.DataFrame(stock_data)
     stock_df.insert(0, 'stock_name', stock_symbol)
     stock_df.reset_index(inplace=True)
-    stock_df.rename(columns={"Date":"date", 
-                         "Open": "open", 
+    stock_df.rename(columns={"Date":"date",
+                         "Open": "open",
                          "High": "high",
                          "Low": "low",
-                         "Close": "close", 
+                         "Close": "close",
                          "Volume": "volume",}, inplace=True)
     stock_df['date'] = pd.to_datetime(stock_df['date'])
     return stock_df
-    
+
 
 def run_facebook_prophet_model(stock_df):
     from fbprophet import Prophet
@@ -52,8 +52,11 @@ def run_facebook_prophet_model(stock_df):
     to_json = plot_df.to_json(orient = 'records')
     return to_json
 
-def run_arima_model_for_stocks(stock_df):
-    print("ARIMA MODEL")
+
+def run_arima_model_for_stock(stock_df):
+    from statsmodels.tsa.arima.model import ARIMA
+    from sklearn.metrics import mean_squared_error
+    from pandas.plotting import lag_plot
     print(stock_df.isnull().sum())
 
     """
@@ -73,7 +76,7 @@ def run_arima_model_for_stocks(stock_df):
     plt.ylabel("price")
     plt.show()
     """
-    
+
     X_train, X_test = stock_df[0:int(len(stock_df)*0.8)], stock_df[int(len(stock_df)*0.8):]
     X_train = X_train.set_index('date')
     X_test = X_test.set_index('date')
@@ -87,10 +90,10 @@ def run_arima_model_for_stocks(stock_df):
     training_data = X_train['close'].values
     test_data = X_test['close'].values
 
-    #p is the lag order, relationship bewtween current observation and the previous observations, 
+    #p is the lag order, relationship bewtween current observation and the previous observations,
     # the model takes a number and calculates the lag
     #d is the difference (subtracting an aobeservation from its previous step) applied to remove trends in the data
-    #q Moving avaerage is the relationship betwen observation and the error 
+    #q Moving avaerage is the relationship betwen observation and the error
     import warnings
     warnings.filterwarnings('ignore')
     #get the history of all prices from data
@@ -98,7 +101,7 @@ def run_arima_model_for_stocks(stock_df):
     model_predictions = []
     number_of_test_observations = len(test_data)
     for time_point in range(number_of_test_observations):
-        model = ARIMA(history, order=(4,1,0)) 
+        model = ARIMA(history, order=(1,1,1))
         model_fit = model.fit()
         output = model_fit.forecast()
         yhat = output[0]
@@ -108,7 +111,7 @@ def run_arima_model_for_stocks(stock_df):
     MSE_error = mean_squared_error(test_data, model_predictions)
     print('Testing Mean Squared Error is {}'.format(MSE_error))
 
-    test_date_range = X_test.index 
+    test_date_range = X_test.index
 
     plot_df =  pd.DataFrame({'date': test_date_range,
                         'prediction': model_predictions,
