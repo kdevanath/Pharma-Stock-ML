@@ -44,7 +44,9 @@ def run_facebook_prophet_model(stock_df):
 
     plot_df =  pd.DataFrame({'date': prediction['ds'],
                         'prediction': prediction['yhat'],
-                        'actual': features['y']})
+                        'actual': features['y']
+                        'yhat_lower': prediction['yhat_lower']
+                        'yhat_upper': prediction['yhat_upper']})
     to_json = plot_df.to_json(orient = 'records')
     return to_json
 
