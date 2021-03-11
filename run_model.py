@@ -35,13 +35,6 @@ def run_facebook_prophet_model(stock_df):
     m.fit(features) # fit the model using all data
     future = m.make_future_dataframe(periods=365) #we need to specify the number of days in future
     prediction = m.predict(future)
-    # m.plot(prediction)
-    # plt.title("Prediction of the BMY Stock Price using the Prophet")
-    # plt.xlabel("Date")
-    # plt.ylabel("Close Stock Price")
-    # plt.show()
-    # m.plot_components(prediction)
-    #plt.show()
     print(prediction.columns)
 
     plot_df =  pd.DataFrame({'date': prediction['ds'],
