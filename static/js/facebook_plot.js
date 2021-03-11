@@ -7,7 +7,7 @@ $(function(){
       type: "GET",
       url: `/facebook_model/${symbol}`,
       success: function(data) {
-        updateFSymbol(data);
+        updateFSymbol(data, symbol);
       },
       error: function(jqXHR, textStatus, errorThrown) {
         alert(jqXHR.status);
@@ -45,34 +45,84 @@ function updateFSymbol(facebookData, symbol) {
 	x_var = [],
 	y_act = [],
 	y_pred = [],
+	yupper = [],
+	ylower = [],
 	fbData.forEach((item, i) => {
 		x_var.push(convertDate(item['date']));
 		y_act.push(item['actual']);
 		y_pred.push(item['prediction']);
+		ylower.push(item['yhat_lower']);
+		yupper.push(item['yhat_upper']);
 	});
+
+	title = 'Forecasting for ' + symbol;
 
 	let trace1 = {
 		x: x_var,
 	 	y: y_act,
-	 	type: "line",
+		 type: "scatter",
+		 mode: "markers",
 	 	marker: {
-		 color: ['#1DB954']
-	 	}
+		 color: '#fffaef',
+		 size: 2,
+		 line: {
+			color: '#000000',
+			width: 0.75
+		  }
+		 },
+		 name: 'Actual',
 	};
 
 	let trace2 = {
 		x: x_var,
 		y: y_pred,
-		type: "line",
-	 	marker: {
-		 color: ['#441DB9']
-	 	}
+		mode: "line",
+	 	markers: {
+		 color: '#00FFFF'
+		 },
+		 line: {
+			'width': 1
+		  },
+		  backgroundColor: "rgba(54, 162, 235, 0.2)",
+		  name: 'Forecast',
 	};
 
-	let data = [trace1,trace2]
+	yhat_lower = {
+		x: x_var,
+		y: ylower,
+		marker: {
+		  color: 'rgba(0,0,0,0)'
+		},
+		showlegend: false,
+		hoverinfo: 'none',
+	};
 
+	yhat_upper = { 
+		x: x_var,
+		y: yupper,
+		fill:'tonexty',
+		fillcolor: 'rgb(142, 223, 255)',
+		name: 'Confidence',
+		hoverinfo: 'none',
+		mode: 'none'
+	}
+
+	let data = [yhat_lower, yhat_upper, trace1,trace2];
 	const layout = {
-	  title: title
+	  title: title,
+	  margin: {
+		't': 20,
+		'b': 50,
+		'l': 60,
+		'r': 10
+	  },
+	  legend: {
+		'bgcolor': 'rgba(0,0,0,0)'
+	  },
+	  xaxis: {
+        type: "date"
+      },
+
 	};
 	Plotly.newPlot("plot", data, layout);
 };
