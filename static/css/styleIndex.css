@@ -173,7 +173,7 @@ td {
   }
 }
     
-#search-input
+#controller
 {
     width: 60%;
     top: 1px;
@@ -186,7 +186,7 @@ td {
     left: -3px;
   }
 
-  #search-text{
+  #search-name{
       text-align: center !important;
   }
 

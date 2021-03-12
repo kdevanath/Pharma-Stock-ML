@@ -34,7 +34,7 @@ function convertDate(timestamp) {
 	var dd = time.getDate();
 	var mm = time.getMonth()+1;
 	var yy = time.getFullYear();
-	return  mm+"/" + yy;
+	return  dd+"/"+mm+"/" + yy;
 }
 
 function updateFSymbol(facebookData, symbol) {
@@ -108,9 +108,19 @@ function updateFSymbol(facebookData, symbol) {
 	let data = [yhat_lower, yhat_upper, trace1,trace2];
 	const layout = {
 	  title: title,
+	  xaxis: {
+		  title:{
+			  text:"Date"
+		  }
+	  },
+	  yaxis: {
+		title:{
+			text:"Price ($)"
+		}
+	},
 	  margin: {
 		't': 30,
-		'b': 60,
+		'b': 90,
 		'l': 50,
 		'r': 20
 	  },
