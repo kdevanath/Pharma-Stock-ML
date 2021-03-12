@@ -2,9 +2,9 @@ import numpy as np
 import pandas as pd
 import yfinance as yf
 from pandas import datetime
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 #from  statsmodels.tsa.arima.model import ARIMA
-from sklearn.metrics import mean_squared_error
+#from sklearn.metrics import mean_squared_error
 
 
 def get_stock_data(stock_symbol):
@@ -50,6 +50,7 @@ def run_arima_model_for_stock(stock_df):
     from statsmodels.tsa.arima.model import ARIMA
     from sklearn.metrics import mean_squared_error
     from pandas.plotting import lag_plot
+    import matplotlib.pyplot as plt
     print(stock_df.isnull().sum())
 
     """
