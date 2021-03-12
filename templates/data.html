@@ -28,13 +28,13 @@
 </ul>
 
 <div class="input-group">
-  <form action="" id="navbar-search-form">
+  <form action="/data" method="GET" id="header-search-form">
     <div class="form-outline">
-      <input id="search-input" type="search" id="form1" class="form-control" placeholder="Ticker"/>
+      <input type="search" name="symbol" class="form-control" />
       <label class="form-label" for="form1"></label>
-    
-    <button id="search-button" type="submit" class="btn btn-primary">
-      <i class="fas fa-search" id="search-text">Search</i>
+    </div>
+    <button type="submit" class="btn btn-primary">
+      <i class="fas fa-search">Search</i>
     </button>
   
   </form>
@@ -132,11 +132,11 @@
     <thead>
       <tr>
         <th>Company:</th>
-        <th><a  href="https://finance.yahoo.com/quote/PFE?p=PFE&.tsrc=fin-srch">PFE</a></th>
-        <th><a  href="https://finance.yahoo.com/quote/JNJ?p=JNJ&.tsrc=fin-srch">JNJ</a></th>
-        <th><a  href="https://finance.yahoo.com/quote/AZN?p=AZN&.tsrc=fin-srch">AZN</a></th>
-        <th><a  href="https://finance.yahoo.com/quote/MRK?p=MRK&.tsrc=fin-srch">MRK</a></th>
-        <th><a  href="https://finance.yahoo.com/quote/BMY?p=BMY&.tsrc=fin-srch">BMY</a></th>
+        <th><a href="/data?symbol=PFE">PFE</a></th>
+        <th><a href="/data?symbol=JNJ">JNJ</a></th>
+        <th><a href="/data?symbol=AZN">AZN</a></th>
+        <th><a href="/data?symbol=MRK">MRK</a></th>
+        <th><a href="/data?symbol=BMY">BMY</a></th>
       </tr>
     </thead>
     <tbody>
