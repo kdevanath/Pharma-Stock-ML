@@ -6,12 +6,18 @@ $(function(){
     $.ajax({
       type: "GET",
       url: `/facebook_model/${symbol}`,
+			beforeSend: function(){
+					$('#loader').show();
+			},
       success: function(data) {
         updateFSymbol(data, symbol);
       },
       error: function(jqXHR, textStatus, errorThrown) {
         alert(jqXHR.status);
       },
+			complete: function(){
+					$('#loader').hide();
+			},
     });
 
 		// // Get data for arima chart
@@ -97,7 +103,7 @@ function updateFSymbol(facebookData, symbol) {
 		hoverinfo: 'none',
 	};
 
-	yhat_upper = { 
+	yhat_upper = {
 		x: x_var,
 		y: yupper,
 		fill:'tonexty',
