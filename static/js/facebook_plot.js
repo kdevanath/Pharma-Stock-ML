@@ -40,7 +40,7 @@ function convertDate(timestamp) {
 }
 
 function updateFSymbol(facebookData, symbol) {
-	print('Starting to update graph')
+	console.log('Starting to update graph')
 	let fbData = JSON.parse(facebookData)
 	x_var = [],
 	y_act = [],
@@ -54,7 +54,7 @@ function updateFSymbol(facebookData, symbol) {
 		ylower.push(item['yhat_lower']);
 		yupper.push(item['yhat_upper']);
 	});
-	print('finsished  fbData')
+	console.log('finsished  fbData')
 	title = 'Forecasting for ' + symbol;
 
 	let trace1 = {
@@ -124,7 +124,7 @@ function updateFSymbol(facebookData, symbol) {
       },
 
 	};
-	print('strating  plot')
+	console.log('strating  plot')
 	Plotly.newPlot("plot", data, layout);
 };
 
