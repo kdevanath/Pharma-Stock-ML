@@ -21,11 +21,11 @@ def run_facebook_model(symbol):
     stock_df = get_stock_data(symbol)
     return run_facebook_prophet_model(stock_df)
 
-@app.route("/arima_model/<symbol>")
-def run_arima_model(symbol):
-    print(symbol)
-    stock_df2 = get_stock_data(symbol)
-    return run_arima_model_for_stock(stock_df2)
+#@app.route("/arima_model/<symbol>")
+#def run_arima_model(symbol):
+    #print(symbol)
+    #stock_df2 = get_stock_data(symbol)
+    #return run_arima_model_for_stock(stock_df2)
 
 if __name__ == "__main__":
     app.run(port = 5002, debug=True)

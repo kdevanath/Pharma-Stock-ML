@@ -84,6 +84,7 @@ td {
     border-width: 1px !important;
     border-color: white;
     border-top: none !important;
+<<<<<<< HEAD
 
 }
 
@@ -172,3 +173,28 @@ td {
     transform: rotate(360deg);
   }
 }
+=======
+    
+}
+
+#search-input
+{
+    width: 60%;
+    top: 1px;
+}
+
+  #search-button{
+    width: 35%;
+    height: 34px;
+    top: 1px !important;
+    left: -3px;
+  }
+
+  #search-text{
+      text-align: center !important;
+  }
+
+  .Ticker {
+    width: 50%;
+  }
+>>>>>>> b5ff0c8... updated search button and added to ticker chart
