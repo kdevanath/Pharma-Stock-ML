@@ -1,40 +1,32 @@
 $(function(){
-	$('#navbar-search-form').submit((event) => {
-		const symbol = $('#search-input').val();
+	// Handle empty search
+	if (!new URLSearchParams(window.location.search).has('symbol')) {
+		const url = new URL(window.location);
+		url.searchParams.set('symbol', 'PFE');
+		window.history.pushState({}, '', url);
+	}
 
-		// Get data for facebook chart
-    $.ajax({
-      type: "GET",
-      url: `/facebook_model/${symbol}`,
-			beforeSend: function(){
-					$('#loader').show();
-			},
-      success: function(data) {
-        updateFSymbol(data, symbol);
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-        alert(jqXHR.status);
-      },
-			complete: function(){
-					$('#loader').hide();
-			},
-    });
+	// Get search params from URL
+	const urlParams = new URLSearchParams(window.location.search);
+	$('#header-search-form [name="symbol"]').val(urlParams.get('symbol'));
 
-		// // Get data for arima chart
-    // $.ajax({
-    //   type: "GET",
-    //   url: `/arima_model/${symbol}`,
-    //   success: function(data) {
-    //     updateASymbol(data);
-    //   },
-    //   error: function(jqXHR, textStatus, errorThrown) {
-    //     alert(jqXHR.status);
-    //   },
-    // });
-
-		// Prevent form from being submitted to server
-		return false;
-	});
+ 	// Get data for facebook chart
+  $.ajax({
+    type: "GET",
+    url: `/facebook_model/${urlParams.get('symbol')}`,
+		beforeSend: function(){
+				$('#loader').show();
+		},
+    success: function(data) {
+      updateFSymbol(data, urlParams.get('symbol'));
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      alert(jqXHR.status);
+    },
+		complete: function(){
+				$('#loader').hide();
+		},
+  });
 });
 
 function convertDate(timestamp) {
