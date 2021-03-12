@@ -103,7 +103,6 @@ function updateFSymbol(facebookData, symbol) {
 		hoverinfo: 'none',
 	};
 
-<<<<<<< HEAD
 	yhat_upper = {
 		x: x_var,
 		y: yupper,
@@ -115,10 +114,6 @@ function updateFSymbol(facebookData, symbol) {
 	}
 
 	let data = [yhat_lower, yhat_upper, trace1,trace2];
-=======
-	let data = [trace1,trace2]
-	title = "output"
->>>>>>> b5ff0c8... updated search button and added to ticker chart
 	const layout = {
 	  title: title,
 	  margin: {
