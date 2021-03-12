@@ -119,10 +119,6 @@ function updateFSymbol(facebookData, symbol) {
 	  legend: {
 		'bgcolor': 'rgba(0,0,0,0)'
 	  },
-	  xaxis: {
-        type: "date"
-      },
-
 	};
 	Plotly.newPlot("plot", data, layout);
 };
