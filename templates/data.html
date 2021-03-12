@@ -30,13 +30,15 @@
 <div class="input-group">
   <form action="" id="navbar-search-form">
     <div class="form-outline">
-      <input id="search-input" type="search" id="form1" class="form-control" />
+      <input id="search-input" type="search" id="form1" class="form-control" placeholder="Ticker"/>
       <label class="form-label" for="form1"></label>
-    </div>
+    
     <button id="search-button" type="submit" class="btn btn-primary">
       <i class="fas fa-search" id="search-text">Search</i>
     </button>
+  
   </form>
+</div>
 </div>
 
 
@@ -130,11 +132,11 @@
     <thead>
       <tr>
         <th>Company:</th>
-        <th>PFE</th>
-        <th>JNJ</th>
-        <th>AZN</th>
-        <th>MRK</th>
-        <th>BMY</th>
+        <th><a  href="https://finance.yahoo.com/quote/PFE?p=PFE&.tsrc=fin-srch">PFE</a></th>
+        <th><a  href="https://finance.yahoo.com/quote/JNJ?p=JNJ&.tsrc=fin-srch">JNJ</a></th>
+        <th><a  href="https://finance.yahoo.com/quote/AZN?p=AZN&.tsrc=fin-srch">AZN</a></th>
+        <th><a  href="https://finance.yahoo.com/quote/MRK?p=MRK&.tsrc=fin-srch">MRK</a></th>
+        <th><a  href="https://finance.yahoo.com/quote/BMY?p=BMY&.tsrc=fin-srch">BMY</a></th>
       </tr>
     </thead>
     <tbody>
@@ -145,6 +147,14 @@
         <td>$49.81</td>
         <td>$74.76</td>
         <td>$60.93</td>
+      </tr>
+      <tr>
+        <td>Openning Price:</td>
+        <td>$36.23</td>
+        <td>$153.34</td>
+        <td>$51.19</td>
+        <td>$70.23</td>
+        <td>$58.73</td>
       </tr>
       </tbody>
     </table>
@@ -169,7 +179,7 @@
       </div>
     </div><br><br><br><br>
 
-  <div class="lds-roller" id= "loader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  <div class="lds-roller" id= "loader" style="display: none"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 
   <div id="plot"></div><br><br><br><br>
 

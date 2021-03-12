@@ -92,7 +92,7 @@ td {
   position: relative;
   width: 80px;
   height: 80px;
-  left: 675px;
+  left: 48%;
 }
 .lds-roller div {
   animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
@@ -172,3 +172,24 @@ td {
     transform: rotate(360deg);
   }
 }
+    
+#search-input
+{
+    width: 60%;
+    top: 1px;
+}
+
+  #search-button{
+    width: 35%;
+    height: 34px;
+    top: 1px !important;
+    left: -3px;
+  }
+
+  #search-text{
+      text-align: center !important;
+  }
+
+  .Ticker {
+    width: 50%;
+  }

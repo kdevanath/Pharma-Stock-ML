@@ -88,3 +88,24 @@ hr{
     color: white;
     font-weight: bolder;
 }
+
+#search-input
+{
+    width: 81%;
+    top: 1px;
+}
+
+#search-button {
+    width: 15%;
+    height: 34px;
+    top: 1px !important;
+    left: -26px;
+}
+
+  #search-text{
+      text-align: center !important;
+  }
+
+  .Ticker {
+    width: 50%;
+  }
