@@ -20,12 +20,12 @@ korean-lunar-calendar==0.2.1
 LunarCalendar==0.0.9
 lxml==4.6.2
 MarkupSafe==1.1.1
-matplotlib==3.3.4
 multitasking==0.0.9
 numpy==1.19.5
 pandas==1.1.5
 patsy==0.5.1
 Pillow==8.1.2
+plotly==4.14.3
 PyMeeus==0.5.6
 pyparsing==2.4.7
 pystan==2.19.1.1
