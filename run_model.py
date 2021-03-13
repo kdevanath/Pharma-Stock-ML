@@ -33,7 +33,7 @@ def run_facebook_prophet_model(stock_df):
     print(features.head(5))
     m = Prophet(daily_seasonality = True) # the Prophet class (model)
     m.fit(features) # fit the model using all data
-    future = m.make_future_dataframe(periods=100) #we need to specify the number of days in future
+    future = m.make_future_dataframe(periods=50) #we need to specify the number of days in future
     prediction = m.predict(future)
     print(prediction.columns)
 
