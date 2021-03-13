@@ -26,3 +26,10 @@ Use plotly and javascript, be able to plot as the data changes.
         <p>
 Resources:
 https://www.analyticsvidhya.com/blog/2018/10/predicting-stock-price-machine-learningnd-deep-learning-techniques-python/
+          
+https://towardsdatascience.com/time-series-forecasting-predicting-stock-prices-using-an-arima-model-2e3b3080bd70
+
+http://people.duke.edu/~rnau/411arim3.htm
+
+
+          
