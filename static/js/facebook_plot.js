@@ -120,7 +120,7 @@ function updateFSymbol(facebookData, symbol) {
 	},
 	  margin: {
 		't': 30,
-		'b': 90,
+		'b': 100,
 		'l': 50,
 		'r': 20
 	  },
