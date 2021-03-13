@@ -50,37 +50,9 @@ def run_arima_model_for_stock(stock_df):
     from statsmodels.tsa.arima.model import ARIMA
     from sklearn.metrics import mean_squared_error
     from pandas.plotting import lag_plot
-    import matplotlib.pyplot as plt
-    print(stock_df.isnull().sum())
-
-    """
-    from pandas.plotting import lag_plot
-    plt.figure(figsize=(12,8))
-    lag_plot(stock_df['close'], lag=5)
-    plt.title('BMY Stock - Autocorrelation plot with lag = 5')
-    plt.show()
-
-    plt.figure(figsize=(16,8))
-    plt.plot(stock_df["date"], stock_df["close"])
-    xticks = pd.date_range(datetime.datetime(2010,1,1), datetime.datetime(2021,1,1), freq='YS')
-    xticks=xticks.to_pydatetime()
-    plt.xticks(xticks)
-    plt.title("BMY stock price over time")
-    plt.xlabel("time")
-    plt.ylabel("price")
-    plt.show()
-    """
-
     X_train, X_test = stock_df[0:int(len(stock_df)*0.8)], stock_df[int(len(stock_df)*0.8):]
     X_train = X_train.set_index('date')
     X_test = X_test.set_index('date')
-
-    """ plt.figure(figsize=(12,8))
-    ax=X_train.plot(grid=True, figsize=(12,8))
-    X_test.plot(ax=ax,grid=True)
-    plt.legend(['X_test', 'X_train'])
-    plt.show() """
-
     training_data = X_train['close'].values
     test_data = X_test['close'].values
 
@@ -104,16 +76,11 @@ def run_arima_model_for_stock(stock_df):
         history.append(true_test_value)
     MSE_error = mean_squared_error(test_data, model_predictions)
     print('Testing Mean Squared Error is {}'.format(MSE_error))
-
     test_date_range = X_test.index
 
     plot_df =  pd.DataFrame({'date': test_date_range,
                         'prediction': model_predictions,
                         'actual': test_data})
-    print(plot_df)
-    """ import plotly.express as go
-    fig = go.line(plot_df,x='date',y=['prediction','actual'])
-    fig.show() """
     to_json = plot_df.to_json(orient='records')
     return to_json
 

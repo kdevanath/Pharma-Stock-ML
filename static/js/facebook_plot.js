@@ -63,7 +63,7 @@ function updateFSymbol(facebookData, symbol) {
 		 mode: "markers",
 	 	marker: {
 		 color: '#fffaef',
-		 size: 2,
+		 size: 3,
 		 line: {
 			color: '#000000',
 			width: 0.75
@@ -80,7 +80,7 @@ function updateFSymbol(facebookData, symbol) {
 		 color: '#00FFFF'
 		 },
 		 line: {
-			'width': 1
+			'width': 2
 		  },
 		  backgroundColor: "rgba(54, 162, 235, 0.2)",
 		  name: 'Forecast',
