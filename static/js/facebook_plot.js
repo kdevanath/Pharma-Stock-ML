@@ -9,7 +9,7 @@ $(function(){
 	// Get search params from URL
 	const urlParams = new URLSearchParams(window.location.search);
 	$('#header-search-form [name="symbol"]').val(urlParams.get('symbol'));
-
+	console.log('Calling GET')
  	// Get data for facebook chart
   $.ajax({
     type: "GET",
@@ -18,6 +18,7 @@ $(function(){
 				$('#loader').show();
 		},
     success: function(data) {
+		console.log('Calling FSymbol')
       updateFSymbol(data, urlParams.get('symbol'));
     },
     error: function(jqXHR, textStatus, errorThrown) {
@@ -52,7 +53,7 @@ function updateFSymbol(facebookData, symbol) {
 		ylower.push(item['yhat_lower']);
 		yupper.push(item['yhat_upper']);
 	});
-
+	console.log('done  push')
 	title = 'Forecasting for ' + symbol;
 
 	let trace1 = {
@@ -62,7 +63,7 @@ function updateFSymbol(facebookData, symbol) {
 		 mode: "markers",
 	 	marker: {
 		 color: '#fffaef',
-		 size: 2,
+		 size: 3,
 		 line: {
 			color: '#000000',
 			width: 0.75
@@ -79,7 +80,7 @@ function updateFSymbol(facebookData, symbol) {
 		 color: '#00FFFF'
 		 },
 		 line: {
-			'width': 1
+			'width': 2
 		  },
 		  backgroundColor: "rgba(54, 162, 235, 0.2)",
 		  name: 'Forecast',
