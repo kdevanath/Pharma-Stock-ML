@@ -180,9 +180,9 @@ td {
 }
 
   #search-button{
-    width: 35%;
-    height: 34px;
-    top: 1px !important;
+    width: 34%;
+    height: 32px;
+    top:-13px !important;
     left: -3px;
   }
 

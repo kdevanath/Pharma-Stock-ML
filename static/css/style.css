@@ -95,14 +95,21 @@ hr{
     top: 1px;
 }
 
-#search-button {
-    width: 15%;
-    height: 34px;
-    top: 1px !important;
-    left: -26px;
+#controller
+{
+    width: 50%;
+    top: 1px;
 }
 
-  #search-text{
+
+#search-button {
+    width: 34%;
+    height: 32px;
+    top:-13px !important;
+    left: -3px;
+}
+
+  #search-name{
       text-align: center !important;
   }
 
